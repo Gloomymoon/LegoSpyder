@@ -5,26 +5,37 @@
 # See documentation in:
 # http://doc.scrapy.org/en/latest/topics/items.html
 
-import scrapy
+from scrapy import Field, Item
 
 
-class LegoSpyderItem(scrapy.Item):
+class LegoBaseItem(Item):
+    productId = Field()
+    file_urls = Field()
+    files = Field()
+    file_paths = Field()
+
+
+class LegoProductItem(LegoBaseItem):
     # define the fields for your item here like:
-    # name = scrapy.Field()
-    theme = scrapy.Field()
-    year = scrapy.Field()
-    productId = scrapy.Field()
-    productName = scrapy.Field()
-    productImage = scrapy.Field()
-    BI_desc = scrapy.Field()
-    BI_pdfLoc = scrapy.Field()
-    BI_size = scrapy.Field()
-    BI_fpimg = scrapy.Field()
-    BI_isAlt = scrapy.Field()
+    # name = Field()
+    productName = Field()
+    productImage = Field()
+    theme = Field()
+    year = Field()
 
 
-class TestItem(scrapy.Item):
-    image_urls = scrapy.Field()
-    images = scrapy.Field()
-    image_paths = scrapy.Field()
+class LegoBuildingInstructionsItem(LegoBaseItem):
+    description = Field()
+
+
+class LegoImageItem(Item):
+    image_urls = Field()
+    images = Field()
+    image_paths = Field()
+
+
+class LegoFileItem(Item):
+    file_urls = Field()
+    files = Field()
+    file_paths = Field()
 

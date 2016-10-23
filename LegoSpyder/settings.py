@@ -28,6 +28,8 @@ ROBOTSTXT_OBEY = False
 # See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
 #DOWNLOAD_DELAY = 3
+DOWNLOAD_MAXSIZE = 0
+DOWNLOAD_TIMEOUT = 18000
 # The download delay setting will honor only one of:
 #CONCURRENT_REQUESTS_PER_DOMAIN = 16
 #CONCURRENT_REQUESTS_PER_IP = 16
@@ -65,10 +67,15 @@ ROBOTSTXT_OBEY = False
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'LegoSpyder.pipelines.TestPipeline': 1,
+    #'scrapy.pipeline.files.FilesPipeline': 1,
+    #'LegoSpyder.pipelines.LegoImagePipeline': 100,
+    'LegoSpyder.pipelines.LegoFilePipeline': 200,
+    #'LegoSpyder.pipelines.JsonWriterPipeline': 900,
 }
-IMAGES_STORE = 'F:\\Workspace\\Python\\LegoSpyder\\Download\\Test'
+IMAGES_STORE = 'F:\\Workspace\\Python\\LegoSpyder\\Download'
+FILES_STORE = 'F:\\Workspace\\Python\\LegoSpyder\\Download'
 IMAGES_EXPIRES = 90
+FILES_EXPIRES = 90
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
